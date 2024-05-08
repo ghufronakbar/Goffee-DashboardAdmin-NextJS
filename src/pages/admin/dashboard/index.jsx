@@ -13,8 +13,6 @@ import {
     Heading,
 } from "@chakra-ui/react";
 
-
-
 export default function Dashboard() {
     return (
         <>
@@ -35,9 +33,10 @@ export default function Dashboard() {
                     </Flex>
                     <Flex>
                         <StatisticChartOrderMonthly flex={1}/>
+                        <StatisticChartItemMonthly flex={1}/>
                     </Flex>
                     <Flex>
-                        <StatisticChartItemMonthly flex={1}/>
+                       
                     </Flex>
                 </Container>
             </main>
