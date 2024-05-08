@@ -1,7 +1,8 @@
 
 import { HeadAdmin } from "@/components/HeadAdmin";
 import { NavbarAdmin } from "@/components/NavbarAdmin";
-import { TableMenu } from "@/components/table/TableMenu";
+import { TableOrders } from "@/components/table/TableOrders";
+
 import {
     Container,
     Heading,
@@ -9,7 +10,7 @@ import {
 
 
 
-export default function Menu() {
+export default function Orders() {
     return (
         <>
             <HeadAdmin />
@@ -17,9 +18,9 @@ export default function Menu() {
                 <NavbarAdmin />
                 <Container maxW="80%">
                     <Heading marginBottom="8" marginTop="8">
-                        Data Menus
+                        Data Orders
                     </Heading>
-                    <TableMenu/>
+                   {TableOrders('0')}
                 </Container>
             </main>
         </>

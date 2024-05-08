@@ -119,7 +119,7 @@ export function TableMenu() {
             </Thead>
             <Tbody>
               {dataMenu?.data.values.map((item) => (
-                <Tr key={item.berita_id}>
+                <Tr key={item.id_menu}>
                   <Td>{i++}</Td>
                   <Td>
                     <Image
