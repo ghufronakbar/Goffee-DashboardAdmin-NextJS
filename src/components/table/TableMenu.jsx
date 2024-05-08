@@ -18,27 +18,33 @@ import {
 import { axiosInstance } from "../../lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+import { Loading } from "../Loading";
+import { useState } from "react";
+import { baseURL } from "@/lib/baseUrl";
 
 export function TableMenu() {
   const router = useRouter();
   const toast = useToast();
- 
+  const [loading, setLoading] = useState(true);
 
   let i = 1;
   const { data: dataMenu, refetch: refetchDataMenu } = useQuery({
+    queryKey: ["menus"],
     queryFn: async () => {
       const dataResponse = await axiosInstance.get("/menus");
+      setLoading(false);
       return dataResponse;
     },
   });
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id_menu) => {
     try {
-      await axiosInstance.delete(`/warga/delete/${id}`);
-
+      await axiosInstance.delete(`/menu/delete/${id_menu}`);
       toast({
-        title: "Warga has been deleted",
+        title: "Menu has been deleted",
         status: "warning",
+        position: "bottom-right",
+        isClosable: true,
       });
       refetchDataMenu();
     } catch (error) {
@@ -82,11 +88,20 @@ export function TableMenu() {
     router.push(`/admin/menu/${id}`);
   };
 
+  const goToAdd = () => {
+    router.push(`/admin/menu/add`);
+  };
+
+  if (loading) return <Loading />;
+
   return (
     <>
+      <Button borderRadius="md" bg="#48BB78" color="white" px={4} my={4} onClick={()=>{goToAdd()}}>
+        Add Menu
+      </Button>
       <Box p={8} borderWidth="1px" borderRadius="lg" overflow="hidden">
         <TableContainer>
-          <Table colorScheme="purple">
+          <Table>
             <Thead>
               <Tr>
                 <Th>No</Th>
@@ -111,7 +126,7 @@ export function TableMenu() {
                       borderRadius="18"
                       boxSize="60px"
                       objectFit="cover"
-                      src={item.picture}
+                      src={`${baseURL}/images/menu/${item.picture}`}
                       alt={item.picture}
                     />
                   </Td>
@@ -126,10 +141,10 @@ export function TableMenu() {
                           borderRadius="md"
                           bg="orange"
                           color="white"
-                          px={8}
+                          px={2}
                           h={8}
                         >
-                          HOT
+                          🔥 HOT
                         </Box>
                       )}
                       {item.variant == "Ice" && (
@@ -138,10 +153,10 @@ export function TableMenu() {
                           borderRadius="md"
                           bg="teal"
                           color="white"
-                          px={9}
+                          px={3}
                           h={8}
                         >
-                          ICE
+                          ❄️ ICE
                         </Box>
                       )}
                     </Center>
