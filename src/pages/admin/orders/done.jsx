@@ -14,7 +14,7 @@ function Done() {
           <SidebarMenu flex={1} />
           <Container maxW="80%">
             <Heading marginBottom="8" marginTop="8">
-              Data Orders
+              Finished Orders
             </Heading>
             {TableOrders(6)}
           </Container>

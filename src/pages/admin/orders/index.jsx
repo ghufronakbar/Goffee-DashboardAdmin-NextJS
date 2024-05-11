@@ -1,7 +1,7 @@
 import { HeadAdmin } from "@/components/HeadAdmin";
 import { SidebarMenu } from "@/components/SidebarMenu";
 import { TableOrders } from "@/components/table/TableOrders";
-
+import { withAuth } from "@/lib/authorization";
 import { Container, Flex, Heading } from "@chakra-ui/react";
 
 function Orders() {

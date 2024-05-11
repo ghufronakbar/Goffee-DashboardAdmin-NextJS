@@ -13,7 +13,7 @@ function CancelByAdmin() {
           <SidebarMenu flex={1} />
           <Container maxW="80%">
             <Heading marginBottom="8" marginTop="8">
-              Data Orders
+            Cancelled By Admin Orders
             </Heading>
             {TableOrders(2)}
           </Container>

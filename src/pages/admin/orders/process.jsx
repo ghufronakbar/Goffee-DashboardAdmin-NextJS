@@ -14,7 +14,7 @@ function Process() {
           <SidebarMenu flex={1} />
           <Container maxW="80%">
             <Heading marginBottom="8" marginTop="8">
-              Data Orders
+              Process Orders
             </Heading>
             {TableOrders(4)}
           </Container>

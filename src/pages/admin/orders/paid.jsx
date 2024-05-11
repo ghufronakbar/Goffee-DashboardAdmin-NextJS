@@ -14,7 +14,7 @@ function Paid() {
           <SidebarMenu flex={1} />
           <Container maxW="80%">
             <Heading marginBottom="8" marginTop="8">
-              Data Orders
+              Paid Orders
             </Heading>
             {TableOrders(3)}
           </Container>

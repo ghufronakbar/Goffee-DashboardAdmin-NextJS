@@ -13,7 +13,7 @@ function Ready() {
           <SidebarMenu flex={1} />
           <Container maxW="80%">
             <Heading marginBottom="8" marginTop="8">
-              Data Orders
+              Ready Orders
             </Heading>
             {TableOrders(5)}
           </Container>

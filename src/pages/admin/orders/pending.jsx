@@ -14,7 +14,7 @@ function Pending() {
           <SidebarMenu flex={1} />
           <Container maxW="80%">
             <Heading marginBottom="8" marginTop="8">
-              Data Orders
+              Pending Orders
             </Heading>
             {TableOrders("0")}
           </Container>
