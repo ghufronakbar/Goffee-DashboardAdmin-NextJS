@@ -1,18 +1,23 @@
 import { HeadAdmin } from "@/components/HeadAdmin";
-import { NavbarAdmin } from "@/components/NavbarAdmin";
+import { SidebarMenu } from "@/components/SidebarMenu";
 import { FormMenuAdd } from "@/components/form/FormMenuAdd";
-import { Container } from "@chakra-ui/react";
+import { withAuth } from "@/lib/authorization";
+import { Container, Flex } from "@chakra-ui/react";
 
-export default function MenuAdd() {
+function MenuAdd() {
   return (
     <>
       <HeadAdmin />
       <main>
-        <NavbarAdmin />
-        <Container maxW="80%">
-          <FormMenuAdd />
-        </Container>
+        <Flex>
+          <SidebarMenu flex={1} />{" "}
+          <Container maxW="80%">
+            <FormMenuAdd />
+          </Container>
+        </Flex>
       </main>
     </>
   );
 }
+
+export default withAuth(MenuAdd);
