@@ -11,12 +11,11 @@ export default function Custom404() {
       minHeight="100vh"
       flexDirection="column"
     >
-      <Heading>Page 404 - Not Found</Heading>
+      <Heading>Goffee: Page 404 - Not Found</Heading>
       <Image
       src='/404.jpg'
       width={500}
-      height={500}/>
-      <Text as='b' mt={2}>Radin: Are you lost?</Text>
+      height={500}/>      
       <Text marginTop="4">
         Return to{" "}
         <Text
