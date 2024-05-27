@@ -30,6 +30,7 @@ export function SidebarMenu() {
           }}
         >
           <MenuItem onClick={()=>{router.push(`/admin/dashboard`)}}> 📊 Dashboard </MenuItem>
+          <MenuItem onClick={()=>{router.push(`/admin/information`)}}> 💲 Information Payment </MenuItem>
           <MenuItem onClick={()=>{router.push(`/admin/menu`)}}> 🍵 Menu </MenuItem>
           <SubMenu label="🧾 Orders">
             <MenuItem onClick={()=>{router.push(`/admin/orders`)}}> 📑 All Orders </MenuItem>
