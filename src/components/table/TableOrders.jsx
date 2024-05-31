@@ -394,7 +394,7 @@ export function TableOrders(status) {
                               </Tbody>
                               <Tr>
                                 <Th>Total</Th>
-                                <Th>Rp {total}</Th>
+                                <Th>Rp {item.total}</Th>
                               </Tr>
                               <TableCaption>Include tax and shipping cost</TableCaption>
                             </Table>
