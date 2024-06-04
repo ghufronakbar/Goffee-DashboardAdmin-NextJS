@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { HeadAdmin } from "@/components/HeadAdmin";
 import { useRouter } from "next/router";
+import axiosInstanceLogin from "@/lib/axiosLogin";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axiosInstance.post("/login", {
+      const response = await axiosInstanceLogin.post("/login", {
         email: email,
         password: password,
       });

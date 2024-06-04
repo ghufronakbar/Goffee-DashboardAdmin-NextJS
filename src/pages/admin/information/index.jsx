@@ -1,8 +1,8 @@
 import { HeadAdmin } from "@/components/HeadAdmin";
-import { FormMenuEdit } from "@/components/form/FormMenuEdit";
 import { Container, Flex } from "@chakra-ui/react";
 import { withAuth } from "@/lib/authorization";
 import { SidebarMenu } from "@/components/SidebarMenu";
+import { FormInformation } from "@/components/form/FormInformation";
 
 function Information() {
   return (
@@ -12,7 +12,7 @@ function Information() {
         <Flex>
           <SidebarMenu flex={1} />
           <Container maxW="80%">
-            <FormMenuEdit />
+            <FormInformation/>
           </Container>
         </Flex>
       </main>

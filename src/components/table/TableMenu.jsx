@@ -31,7 +31,7 @@ export function TableMenu() {
   const { data: dataMenu, refetch: refetchDataMenu } = useQuery({
     queryKey: ["menus"],
     queryFn: async () => {
-      const dataResponse = await axiosInstance.get("/menus");
+      const dataResponse = await axiosInstance.get("/menus");      
       setLoading(false);
       return dataResponse;
     },
