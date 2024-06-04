@@ -151,8 +151,8 @@ export function FormMenuEdit() {
                       borderRadius="18"
                       boxSize="400"
                       objectFit="cover"
-                      src={`${baseURL}/images/menu/${item.picture}`}
-                      alt={item.picture}
+                      src={item.picture}
+                      alt={item.menu_name}
                     />
                   )}
                 </Center>

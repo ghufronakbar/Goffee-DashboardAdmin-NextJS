@@ -126,8 +126,8 @@ export function TableMenu() {
                       borderRadius="18"
                       boxSize="60px"
                       objectFit="cover"
-                      src={`${baseURL}/images/menu/${item.picture}`}
-                      alt={item.picture}
+                      src={item.picture}
+                      alt={item.menu_name}
                     />
                   </Td>
                   <Td>
