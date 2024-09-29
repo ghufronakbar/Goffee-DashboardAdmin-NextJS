@@ -36,6 +36,8 @@ import { Loading } from "../Loading";
 import { useRef, useState } from "react";
 import { baseURL } from "@/lib/baseUrl";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { FaLocationArrow } from "react-icons/fa6";
+import Link from "next/link";
 
 export function TableOrders(status) {
   const router = useRouter();
@@ -52,10 +54,11 @@ export function TableOrders(status) {
   const [userNotes, setUserNotes] = useState(false);
   const [adminNotes, setAdminNotes] = useState(false);
   const [itemHistory, setItemHistory] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState();
+  const [selectedGoogleMaps, setSelectedGoogleMaps] = useState();
   let i = 1;
   let subtotal = 0;
   let total = 0;
-  
 
   const { data: dataOrders, refetch: refetchDataMenu } = useQuery({
     queryKey: ["orders"],
@@ -212,7 +215,7 @@ export function TableOrders(status) {
               <TableCaption>
                 <Alert status="info">
                   <AlertIcon />
-                  There's No{" "}
+                  There&apos;s No{" "}
                   {status == 0
                     ? "Pending"
                     : status == 1
@@ -366,6 +369,8 @@ export function TableOrders(status) {
                         setIsOpenInfo(true);
                         setUserNotes(item.user_notes);
                         setAdminNotes(item.admin_notes);
+                        setSelectedAddress(item.address || null);
+                        setSelectedGoogleMaps(item.urlGoogleMaps || null);
                         setItemHistory(
                           <>
                             <Table>
@@ -396,7 +401,9 @@ export function TableOrders(status) {
                                 <Th>Total</Th>
                                 <Th>Rp {item.total}</Th>
                               </Tr>
-                              <TableCaption>Include tax and shipping cost</TableCaption>
+                              <TableCaption>
+                                Include tax and shipping cost
+                              </TableCaption>
                             </Table>
                           </>
                         );
@@ -501,22 +508,43 @@ export function TableOrders(status) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Modal isOpen={isOpenInfo} onClose={() => setIsOpenInfo(false)} size='xl'>
+      <Modal isOpen={isOpenInfo} onClose={() => setIsOpenInfo(false)} size="xl">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Notes</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            <Text as="b">
+              {selectedAddress ? (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                  }}
+                >
+                  <Text>Address:</Text>
+                  {selectedGoogleMaps && (
+                    <Link href={selectedGoogleMaps} target="_blank">
+                      <FaLocationArrow />
+                    </Link>
+                  )}
+                </div>
+              ) : (
+                "Take Away Order"
+              )}
+            </Text>
+            <Text>{selectedAddress}</Text>
+          </ModalBody>
+          <ModalBody>
             <Text as="b">Customer:</Text>
-            <Text>{userNotes}</Text>
+            <Text>{userNotes ? userNotes : "No notes"}</Text>
           </ModalBody>
           <ModalBody>
             <Text as="b">Admin:</Text>
-            <Text>{adminNotes}</Text>
+            <Text>{adminNotes ? adminNotes : "No notes"}</Text>
           </ModalBody>
-          <ModalBody>            
-            {itemHistory}
-          </ModalBody>
+          <ModalBody>{itemHistory}</ModalBody>
           <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
